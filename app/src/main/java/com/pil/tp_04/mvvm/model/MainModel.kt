@@ -1,9 +1,10 @@
-package com.pil.tp_04.mvp.model
+package com.pil.tp_04.mvvm.model
 
-import com.pil.tp_04.mvp.contract.MainContract
+import com.pil.tp_04.mvvm.contract.MainContract
 
 class MainModel : MainContract.Model {
-    override var counter: Int = ZERO_INT
+    override var counter: Int = 0
+        private set
 
     override fun increment(inputValue: Int) {
         counter += inputValue
@@ -14,10 +15,6 @@ class MainModel : MainContract.Model {
     }
 
     override fun reset() {
-        counter = ZERO_INT
-    }
-
-    companion object {
-        private const val ZERO_INT = 0
+        counter = 0
     }
 }
