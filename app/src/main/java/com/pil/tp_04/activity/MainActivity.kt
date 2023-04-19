@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pil.tp_04.databinding.ActivityMainBinding
 import com.pil.tp_04.mvvm.model.MainModel
 import com.pil.tp_04.mvvm.viewmodel.MainViewModel
+import com.pil.tp_04.mvvm.viewmodel.MainViewModel.CounterData
+import com.pil.tp_04.mvvm.viewmodel.MainViewModel.CounterState
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -20,16 +22,16 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getValue().observe({ lifecycle }, ::updateUI)
     }
 
-    private fun updateUI(data: MainViewModel.CounterData) {
+    private fun updateUI(data: CounterData) {
         when (data.state) {
-            MainViewModel.CounterState.INITIAL -> {
+            CounterState.INITIAL -> {
                 binding.counter.text = data.value.toString()
                 clear()
             }
-            MainViewModel.CounterState.INC -> {
+            CounterState.INC -> {
                 binding.counter.text = data.value.toString()
             }
-            MainViewModel.CounterState.DEC -> {
+            CounterState.DEC -> {
                 binding.counter.text = data.value.toString()
             }
         }
